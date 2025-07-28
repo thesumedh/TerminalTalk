@@ -1,42 +1,96 @@
-# 🛰️ P2P Terminal Chat App (Python)
+You’re building a peer-to-peer, encrypted chat app that works directly in the terminal, without any central server — just invite code, IP+port, and raw sockets.
 
-A lightweight, encrypted, peer-to-peer group chat app that runs in the terminal.  
-No servers. No cloud. Just raw sockets, AES encryption, and pure Python.
+🔧 Key Features You Defined:
+One host creates a room and shares IP:PORT#password (invite code)
 
----
+Others join by entering the invite code
 
-## 🚀 Features
+No servers or cloud services involved
 
-- 🌐 **Room-based Chat**: One person hosts, others join via IP:PORT
-- 🔐 **End-to-End Encryption**: AES-256 secured messages using a shared room password
-- 🧑‍💻 **Nicknames Only**: Peers see only nicknames — host's IP is required, but others stay private
-- 🧾 **Local Chat Logs**: Messages saved in `.txt` logs per room
-- 🛂 **Moderation**: Host can kick users from the room
-- 💻 **Rich Terminal UI**: Clean layout using the `rich` library
-- 🛠️ **No Server or Ngrok**: Runs on pure sockets with optional UPnP/port forwarding
+Optional manual IP & port entry
 
----
+Special support for .edu email access (future idea)
 
-## 🧰 Tech Stack
+Host is the relay (acts like a lightweight server)
 
-- Python 3.x
-- `socket`, `threading`, `argparse`
-- `pycryptodome` — for AES-256 encryption
-- `rich` — for terminal UI
-- `miniupnpc` (optional) — for auto port forwarding
+Nickname-only identity (no IP leaks for peers)
 
----
+AES-encrypted messaging with room password
 
-## 🎮 Demo
+Local message logs (.txt)
 
-![Demo Screenshot](assets/demo.gif)  
-_(Optional: Add an asciinema or GIF to show terminal UI in action)_
+Host can kick users
 
----
+Terminal UI via rich library
 
-## 📦 Installation
+No dependency on Ngrok or paid tools
 
-Install via pip:
+UPnP (optional) for port auto-forwarding
 
-```bash
+📦 Architecture
+P2P hybrid model:
+
+Host acts as relay/server for the room
+
+Others connect directly to host’s IP:port
+
+No central service or API
+
+Encryption handled via shared password and AES-256
+
+Logs and configs saved locally only
+
+🔐 Security Model:
+End-to-end encryption using pycryptodome
+
+Messages only visible to participants in the room
+
+Nicknames shown instead of IPs
+
+IP only required for the host
+
+No data stored or sent to external servers
+
+📚 Learning Outcomes
+By building this project, you’ll learn:
+
+Python sockets (TCP)
+
+Multithreading
+
+Terminal UI with rich
+
+Encryption with AES
+
+P2P architecture
+
+NAT traversal concepts
+
+Basic port forwarding / UPnP
+
+CLI argument parsing (argparse)
+
+Packaging with pip / setuptools
+
+Open-source structure (GitHub organization, docs)
+
+🔧 Deployment + Use Case
+Can be packaged as a CLI tool:
+
+css
+Copy
+Edit
 pip install p2pchat
+p2pchat --host 7788 --name Alice --password myroom
+p2pchat --join 1.2.3.4:7788 --name Bob --password myroom
+Each instance runs in the terminal, lightweight and fast
+
+Suited for:
+
+Hackerspaces
+
+Local/college networks
+
+Friends chatting securely
+
+Anyone avoiding centralized chat platforms
