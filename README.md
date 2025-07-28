@@ -1,6 +1,3 @@
-Sure! Here's your content formatted as a professional and clean `README.md` for your GitHub repository:
-
----
 
 ````markdown
 # 🛰️ P2PChat — A Peer-to-Peer Encrypted Terminal Chat App
